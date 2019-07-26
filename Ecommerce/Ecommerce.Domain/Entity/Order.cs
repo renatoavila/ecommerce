@@ -4,8 +4,7 @@ using System.Text;
 
 namespace Ecommerce.Domain.Entity
 {
-    public class Produto: Base.Entity
+    class Order
     {
-        public string Nome { get; set; }
     }
 }

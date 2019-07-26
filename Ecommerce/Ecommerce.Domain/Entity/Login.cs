@@ -4,8 +4,9 @@ using System.Text;
 
 namespace Ecommerce.Domain.Entity
 {
-    public class Produto: Base.Entity
+    public class Login: Base.Entity
     {
-        public string Nome { get; set; }
+        public string User { get; set; }
+        public string Password { get; set; }
     }
 }

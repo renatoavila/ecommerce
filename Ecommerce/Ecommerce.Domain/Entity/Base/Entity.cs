@@ -3,7 +3,7 @@ using System;
 
 namespace Ecommerce.Domain.Entity.Base
 {
-    public abstract class Entity : IEntity
+    public class Entity : IEntity
     {
         public Entity()
         {
