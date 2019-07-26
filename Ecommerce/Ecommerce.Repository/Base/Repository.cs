@@ -9,8 +9,7 @@ using System.Data.SqlClient;
 using System.Text;
 
 namespace Ecommerce.Repository.Base
-{
-    public class Repository<T> : IRepository<T> where T : class
+{    public class Repository<T> : IRepository<T> where T : class
     {
         private readonly IConfiguration _config;
 
