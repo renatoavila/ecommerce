@@ -12,10 +12,11 @@ namespace Ecommerce.Api.Mapper
     {
         public UserProfile()
         {
-            CreateMap<Client, ClientModel>();
             CreateMap<ClientModel, Client>();
-            CreateMap<AddressModel, Address>();
+            CreateMap<Client, ClientModel>();
+
             CreateMap<Address, AddressModel>();
+            CreateMap<AddressModel, Address>();
         }
     }
 }

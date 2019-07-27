@@ -7,10 +7,10 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Text;
-using System.Text;
+using System.Linq;
 
 namespace Ecommerce.Repository.Base
-{    public class Repository<T> : IRepository<T> where T : class
+{    public class Repository<T> : IRepository<T> where T : class , IEntity
     {
         private readonly IConfiguration _config;
 
@@ -19,7 +19,7 @@ namespace Ecommerce.Repository.Base
             _config = config;
         }
 
-        public long Insert(T entity)
+        public virtual long Insert(T entity)
         { 
             using (var conn = new ConnectionFactory().GetConnection(_config.GetConnectionString("DefaultConnection")))
             {
@@ -27,7 +27,7 @@ namespace Ecommerce.Repository.Base
             }
         }
 
-        public bool Update(T entity)
+        public virtual bool Update(T entity)
         {
             using (var conn = new ConnectionFactory().GetConnection(_config.GetConnectionString("DefaultConnection")))
             {
@@ -35,7 +35,7 @@ namespace Ecommerce.Repository.Base
             }
         } 
 
-        public T Get(int id)
+        public virtual T Get(long id)
         {
             using (var conn = new ConnectionFactory().GetConnection(_config.GetConnectionString("DefaultConnection")))
             {
@@ -43,15 +43,13 @@ namespace Ecommerce.Repository.Base
             }
         }
 
-        public T Get(Guid key)
-        {
-            using (var conn = new ConnectionFactory().GetConnection(_config.GetConnectionString("DefaultConnection")))
-            {
-                return conn.Get<T>(key);
-            }
+        public virtual T Get(Guid key)
+        { 
+                return this.GetAll().First(x => x.Key == key);
+           
         }
 
-        public IEnumerable<T> GetAll()
+        public virtual IEnumerable<T> GetAll()
         {
             using (var conn = new ConnectionFactory().GetConnection(_config.GetConnectionString("DefaultConnection")))
             {
@@ -59,7 +57,7 @@ namespace Ecommerce.Repository.Base
             }
         }
 
-        public bool Delete(T entity)
+        public virtual bool Delete(T entity)
         {
             using (var conn = new ConnectionFactory().GetConnection(_config.GetConnectionString("DefaultConnection")))
             {

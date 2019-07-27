@@ -24,9 +24,9 @@ namespace Ecommerce.Service
               .IsTrue(_clientBusiness.CPFValidate(client), "CPF", "Errado")
            );
 
-            if(client.Valid)
+            if (client.Valid)
             {
-                 _clientBusiness.ChangeClient(client);
+                _clientBusiness.ChangeClient(client);
             }
 
             return client.Key;

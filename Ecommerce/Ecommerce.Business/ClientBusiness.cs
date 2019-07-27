@@ -18,7 +18,7 @@ namespace Ecommerce.Business
 
         public Guid ChangeClient(Client client)
         {
-            if (!_clientRepository.Update(client))
+            //if (!_clientRepository.Update(client))
                  _clientRepository.Insert(client);
            
             return client.Key;

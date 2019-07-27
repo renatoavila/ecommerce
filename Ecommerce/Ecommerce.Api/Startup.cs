@@ -73,6 +73,8 @@ namespace Ecommerce.Api
         public void DependencyInjection(IServiceCollection services)
         {
 
+            services.AddSingleton<IAddressRepository, AddressRepository>();
+
             services.AddSingleton<IClientRepository, ClientRepository>();
             services.AddTransient<IClientBusiness, ClientBusiness>();
             services.AddTransient<IClientServices, ClientServices>();

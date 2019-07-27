@@ -41,7 +41,9 @@ namespace Ecommerce.Api.Controllers
         {
             try
             {
-                return Ok(_clientServices.GetClient(key));
+                Client client = _clientServices.GetClient(key);
+               // ClientModel clientModel = _mapper.Map<ClientModel>(client);
+                return Ok(client);
             }
             catch (Exception exception)
             {
@@ -60,11 +62,11 @@ namespace Ecommerce.Api.Controllers
         /// <response code="400">Fail request</response>
         /// <response code="500">Internal error</response>
         [HttpPost]
-        public ActionResult<Guid> Post([FromBody] ClientModel clientModel)
+        public ActionResult<Guid> Post([FromBody] Client client)
         {
             try
             {
-                Client client =  _mapper.Map<Client>(clientModel);
+               // Client client =  _mapper.Map<Client>(clientModel);
                 Guid key = _clientServices.ChangeClient(client);
 
                 if (client.Invalid)

@@ -13,7 +13,7 @@
             <response code="200">Return a Client</response>
             <response code="500">Internal error</response>
         </member>
-        <member name="M:Ecommerce.Api.Controllers.ClientController.Post(Ecommerce.Api.Model.ClientModel)">
+        <member name="M:Ecommerce.Api.Controllers.ClientController.Post(Ecommerce.Domain.Entity.Client)">
             <summary>
             Insert new client
             </summary>
