@@ -4,9 +4,10 @@ using System.Text;
 
 namespace Ecommerce.Domain.Entity
 {
-    public class Login: Base.Entity
+   public class Payment: Base.Entity
     {
-        public string User { get; set; }
-        public string Password { get; set; }
+
+        public string State { get; set; }
+        public decimal Value { get; set; }
     }
 }
