@@ -1,6 +1,4 @@
-﻿using AutoMapper;
-using Ecommerce.Api.Model;
-using Ecommerce.Domain.Entity;
+﻿using Ecommerce.Domain.Entity;
 using Ecommerce.Service.Interface;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -17,15 +15,11 @@ namespace Ecommerce.Api.Controllers
 
         private readonly ILogger<ClientController> _logger;
 
-        private readonly IMapper _mapper;
-
         public ClientController(IClientServices clientServices, 
-                                ILogger<ClientController> logger, 
-                                IMapper mapper)
+                                ILogger<ClientController> logger)
         {
             _clientServices = clientServices;
-            _clientServices = clientServices;
-            _mapper = mapper;
+            _clientServices = clientServices; 
         }
 
         // Get api/Client
@@ -37,13 +31,11 @@ namespace Ecommerce.Api.Controllers
         /// <response code="200">Return a Client</response>
         /// <response code="500">Internal error</response>
         [HttpGet]
-        public ActionResult<ClientModel> Get(Guid key)
+        public ActionResult<Client> Get(Guid key)
         {
             try
-            {
-                Client client = _clientServices.GetClient(key);
-               // ClientModel clientModel = _mapper.Map<ClientModel>(client);
-                return Ok(client);
+            { 
+                return Ok(_clientServices.GetClient(key));
             }
             catch (Exception exception)
             {
@@ -65,8 +57,7 @@ namespace Ecommerce.Api.Controllers
         public ActionResult<Guid> Post([FromBody] Client client)
         {
             try
-            {
-               // Client client =  _mapper.Map<Client>(clientModel);
+            { 
                 Guid key = _clientServices.ChangeClient(client);
 
                 if (client.Invalid)

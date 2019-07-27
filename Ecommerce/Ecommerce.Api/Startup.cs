@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using AutoMapper;
-using Ecommerce.Api.Model;
 using Ecommerce.Business;
 using Ecommerce.Business.Interface;
 using Ecommerce.Domain.Entity;
@@ -37,8 +35,6 @@ namespace Ecommerce.Api
         {
             DependencyInjection(services);
             Configuration.GetSection("DefaultConnection");
-
-            services.AddAutoMapper();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             // Configurando o serviço de documentação do Swagger
