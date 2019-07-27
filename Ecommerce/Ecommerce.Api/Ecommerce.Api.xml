@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Ecommerce.Api</name>
+    </assembly>
+    <members>
+        <member name="M:Ecommerce.Api.Controllers.ProdutosController.Get">
+            <summary>
+            Retorna uma lista de produtos
+            </summary>
+            <remarks>         
+            </remarks>
+            <returns>Retorna uma lista de produtos</returns>
+            <response code="200">Retorna uma lista de produtos</response>
+            <response code="500">Erro inesperado</response>
+        </member>
+        <member name="M:Ecommerce.Api.Controllers.ProdutosController.Post(Ecommerce.Domain.Entity.Produto)">
+            <summary>
+            Cria um item
+            </summary>
+            <param name="value"></param>
+            <returns>Um novo item criado</returns>
+            <response code="200">Retorna status</response>
+            <response code="500">Erro inesperado</response>
+        </member>
+    </members>
+</doc>
