@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Text;
+using System.Text;
 
 namespace Ecommerce.Repository.Base
 {    public class Repository<T> : IRepository<T> where T : class
@@ -39,6 +40,14 @@ namespace Ecommerce.Repository.Base
             using (var conn = new ConnectionFactory().GetConnection(_config.GetConnectionString("DefaultConnection")))
             {
                 return conn.Get<T>(id);
+            }
+        }
+
+        public T Get(Guid key)
+        {
+            using (var conn = new ConnectionFactory().GetConnection(_config.GetConnectionString("DefaultConnection")))
+            {
+                return conn.Get<T>(key);
             }
         }
 

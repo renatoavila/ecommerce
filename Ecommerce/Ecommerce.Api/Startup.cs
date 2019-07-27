@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using Ecommerce.Api.Model;
 using Ecommerce.Business;
 using Ecommerce.Business.Interface;
 using Ecommerce.Domain.Entity;
@@ -18,7 +20,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.Extensions.PlatformAbstractions;
-using Swashbuckle.AspNetCore.Swagger;
+using Swashbuckle.AspNetCore.Swagger; 
 
 namespace Ecommerce.Api
 {
@@ -35,6 +37,9 @@ namespace Ecommerce.Api
         {
             DependencyInjection(services);
             Configuration.GetSection("DefaultConnection");
+
+            services.AddAutoMapper();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             // Configurando o serviço de documentação do Swagger
             services.AddSwaggerGen(c =>
@@ -63,8 +68,15 @@ namespace Ecommerce.Api
             });
         }
 
+       
+
         public void DependencyInjection(IServiceCollection services)
         {
+
+            services.AddSingleton<IClientRepository, ClientRepository>();
+            services.AddTransient<IClientBusiness, ClientBusiness>();
+            services.AddTransient<IClientServices, ClientServices>();
+
             services.AddSingleton<IProdutoRepository, ProdutoRepository>();
             services.AddTransient<IProdutoBusiness, ProdutoBusiness>();
             services.AddTransient<IProdutoServices, ProdutoServices>();
@@ -76,8 +88,7 @@ namespace Ecommerce.Api
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-            }
-
+            } 
             app.UseMvc();
 
             // Ativando middlewares para uso do Swagger

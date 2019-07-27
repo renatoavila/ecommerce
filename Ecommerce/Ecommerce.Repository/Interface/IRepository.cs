@@ -10,6 +10,7 @@ namespace Ecommerce.Repository.Interface
         bool Update(T entity);
         bool Delete(T entity);
         T Get(int id);
+        T Get(Guid key);
         IEnumerable<T> GetAll();
     }
 }

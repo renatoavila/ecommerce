@@ -1,9 +1,10 @@
 ﻿using Ecommerce.Domain.Entity.Interfaces;
+using Flunt.Notifications;
 using System;
 
 namespace Ecommerce.Domain.Entity.Base
 {
-    public class Entity : IEntity
+    public class Entity : Notifiable, IEntity
     {
         public Entity()
         {
