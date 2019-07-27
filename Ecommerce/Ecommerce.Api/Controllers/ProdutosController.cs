@@ -23,6 +23,15 @@ namespace Ecommerce.Api.Controllers
             _logger = logger;
         }
 
+        // Get api/Produtos
+        /// <summary>
+        /// Retorna uma lista de produtos
+        /// </summary>
+        /// <remarks>         
+        /// </remarks>
+        /// <returns>Retorna uma lista de produtos</returns>
+        /// <response code="200">Retorna uma lista de produtos</response>
+        /// <response code="500">Erro inesperado</response>
         [HttpGet]
         public ActionResult<IEnumerable<Produto>> Get()
         {
@@ -37,6 +46,14 @@ namespace Ecommerce.Api.Controllers
             }
         }
 
+        // POST api/Produtos
+        /// <summary>
+        /// Cria um item
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns>Um novo item criado</returns>
+        /// <response code="200">Retorna status</response>
+        /// <response code="500">Erro inesperado</response>
         [HttpPost]
         public ActionResult<string> Post([FromBody] Produto Produto)
         {
