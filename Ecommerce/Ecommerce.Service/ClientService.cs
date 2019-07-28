@@ -18,7 +18,7 @@ namespace Ecommerce.Service
 
         public Guid ChangeClient(Client client)
         {
-            client.AddNotification(!_clientBusiness.CPFValidate(client), "CPF Errado");
+            client.AddNotification(!_clientBusiness.CPFValidate(client), "CPF inválido.");
 
             if (client.Valid)
             {

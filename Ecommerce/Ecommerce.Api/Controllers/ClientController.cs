@@ -3,7 +3,6 @@ using Ecommerce.Service.Interface;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Linq;
 
 namespace Ecommerce.Api.Controllers
 {
