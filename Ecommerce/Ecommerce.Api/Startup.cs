@@ -69,15 +69,12 @@ namespace Ecommerce.Api
         public void DependencyInjection(IServiceCollection services)
         {
 
-            services.AddSingleton<IAddressRepository, AddressRepository>();
+            services.AddTransient<IAddressRepository, AddressRepository>();
 
-            services.AddSingleton<IClientRepository, ClientRepository>();
+            services.AddTransient<IClientRepository, ClientRepository>();
             services.AddTransient<IClientBusiness, ClientBusiness>();
             services.AddTransient<IClientServices, ClientServices>();
 
-            services.AddSingleton<IProdutoRepository, ProdutoRepository>();
-            services.AddTransient<IProdutoBusiness, ProdutoBusiness>();
-            services.AddTransient<IProdutoServices, ProdutoServices>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

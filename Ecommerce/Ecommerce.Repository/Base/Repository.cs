@@ -10,7 +10,8 @@ using System.Text;
 using System.Linq;
 
 namespace Ecommerce.Repository.Base
-{    public class Repository<T> : IRepository<T> where T : class , IEntity
+{
+    public class Repository<T> : IRepository<T> where T : class, IEntity
     {
         private readonly IConfiguration _config;
 
@@ -20,7 +21,7 @@ namespace Ecommerce.Repository.Base
         }
 
         public virtual long Insert(T entity)
-        { 
+        {
             using (var conn = new ConnectionFactory().GetConnection(_config.GetConnectionString("DefaultConnection")))
             {
                 return conn.Insert<T>(entity);
@@ -33,7 +34,7 @@ namespace Ecommerce.Repository.Base
             {
                 return conn.Update<T>(entity);
             }
-        } 
+        }
 
         public virtual T Get(long id)
         {
@@ -44,9 +45,8 @@ namespace Ecommerce.Repository.Base
         }
 
         public virtual T Get(Guid key)
-        { 
-                return this.GetAll().First(x => x.Key == key);
-           
+        {
+            return this.GetAll().FirstOrDefault(x => x.Key == key);
         }
 
         public virtual IEnumerable<T> GetAll()
