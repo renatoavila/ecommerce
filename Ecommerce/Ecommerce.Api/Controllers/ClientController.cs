@@ -62,7 +62,7 @@ namespace Ecommerce.Api.Controllers
 
                 if (client.Invalid)
                 {
-                    return BadRequest(new { notifications = client.Notifications.ToArray() });
+                    return BadRequest(new { notifications = client.GetNotification() });
                 }
 
                 return Ok(new { key = key });

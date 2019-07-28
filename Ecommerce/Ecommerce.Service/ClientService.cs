@@ -1,7 +1,6 @@
 ﻿using Ecommerce.Business.Interface;
 using Ecommerce.Domain.Entity;
 using Ecommerce.Service.Interface;
-using Flunt.Validations;
 using System;
 using System.Diagnostics.Contracts;
 
@@ -19,10 +18,7 @@ namespace Ecommerce.Service
 
         public Guid ChangeClient(Client client)
         {
-            client.AddNotifications(new Flunt.Validations.Contract()
-              .Requires()
-              .IsTrue(_clientBusiness.CPFValidate(client), "CPF", "Errado")
-           );
+            client.AddNotification(!_clientBusiness.CPFValidate(client), "CPF Errado");
 
             if (client.Valid)
             {
