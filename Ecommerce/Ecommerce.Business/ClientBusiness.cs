@@ -27,7 +27,7 @@ namespace Ecommerce.Business
         public bool CPFValidate(Client client)
         {
             //todo: implementar validador de CPF
-            return false;
+            return true;
         }
 
         public Client GetClient(Guid key)
