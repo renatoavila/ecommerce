@@ -24,9 +24,10 @@ namespace Ecommerce.Repository
 
         public override bool Update(Client client)
         {
-            client.Address.Id = _addressRepository.Get(client.Address.Key).Id;
+            client.Address.Id = _addressRepository.Get(client.Address.Key)?.Id ?? 0;
+            client.AddressId = client.Address.Id;
             _addressRepository.Update(client.Address);
-            client.Id = base.Get(client.Key).Id;
+            client.Id = base.Get(client.Key)?.Id ?? 0;
             return base.Update(client);
         }
 

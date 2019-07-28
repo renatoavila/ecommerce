@@ -18,16 +18,16 @@ namespace Ecommerce.Business
 
         public Guid ChangeClient(Client client)
         {
-            //if (!_clientRepository.Update(client))
-                 _clientRepository.Insert(client);
-           
+            if (!_clientRepository.Update(client))
+                _clientRepository.Insert(client);
+
             return client.Key;
         }
 
         public bool CPFValidate(Client client)
         {
             //todo: implementar validador de CPF
-            return false;
+            return true;
         }
 
         public Client GetClient(Guid key)
