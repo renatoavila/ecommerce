@@ -25,7 +25,7 @@ namespace Ecommerce.Api.Controllers
         /// <summary>
         /// Return a Product
         /// </summary>
-        /// <param name="key">Key of client</param>
+        /// <param name="key">Key of product</param>
         /// <returns>Return a Product</returns>
         /// <response code="200">Return a Product</response>
         /// <response code="500">Internal error</response>
@@ -45,11 +45,11 @@ namespace Ecommerce.Api.Controllers
 
         // POST api/Product
         /// <summary>
-        /// Insert new client
+        /// Insert new product
         /// </summary>
         /// <param name="Product"></param>
         /// <returns>Um novo item criado</returns>
-        /// <response code="200">Return client of key </response>
+        /// <response code="200">Return product of key </response>
         /// <response code="400">Fail request</response>
         /// <response code="500">Internal error</response>
         [HttpPost]
@@ -76,11 +76,11 @@ namespace Ecommerce.Api.Controllers
 
         // PATCH api/Product
         /// <summary>
-        /// Insert new client
+        /// Update new product
         /// </summary>
         /// <param name="Product"></param>
         /// <returns>Um novo item criado</returns>
-        /// <response code="200">Return client of key </response>
+        /// <response code="200">Return product of key </response>
         /// <response code="400">Fail request</response>
         /// <response code="500">Internal error</response>
         [HttpPatch]

@@ -7,8 +7,12 @@ namespace Ecommerce.Domain.Entity
     public class ItemCart: Base.Entity
 
     {   /// <summary>
-    /// Preço unitario do item
-    /// </summary>
+        /// Produto 
+        /// </summary>
+        public Product product { get; set; }
+        /// <summary>
+        /// Preço unitario do item
+        /// </summary>
         public decimal UnitPrice { get; set; }
         /// <summary>
             /// Quantidade de item

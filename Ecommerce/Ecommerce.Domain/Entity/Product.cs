@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Dapper.Contrib.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Ecommerce.Domain.Entity
 {
+    [Table("Product")]
     public class Product : Base.Entity
     {
         /// <summary>
@@ -30,5 +32,9 @@ namespace Ecommerce.Domain.Entity
         /// Estoque atualizado do produto
         /// </summary>
         public  int UptadedStock { get; set; }
+        /// <summary>
+        /// Peso do produto
+        /// </summary>
+        public double Weight { get; set; }
     }
 }

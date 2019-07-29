@@ -9,7 +9,6 @@ namespace Ecommerce.Business
 {
     public class ClientBusiness : IClientBusiness
     {
-
         private readonly IClientRepository _clientRepository;
         public ClientBusiness(IClientRepository clientRepository)
         {

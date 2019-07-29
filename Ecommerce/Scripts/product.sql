@@ -16,7 +16,8 @@ CREATE TABLE [dbo].[product](
 	model varchar(120) NOT NULL,
 	costprice decimal(10,2)  NOT NULL,
 	saleprice decimal(10,2) NOT NULL,
-	updatestock int
+	updatestock int not null,
+	[weight] float not null
  CONSTRAINT [PK_product] PRIMARY KEY CLUSTERED 
 (
 	[id] ASC
