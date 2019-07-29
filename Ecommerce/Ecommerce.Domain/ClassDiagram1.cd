@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Ecommerce.Domain.Entity.Address">
+    <Position X="4.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAEAAAAAIAAAAAAAAAAIABAAAAAA=</HashCode>
+      <FileName>Entity\Address.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ecommerce.Domain.Entity.Billet" Collapsed="true">
+    <Position X="2" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\Billet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ecommerce.Domain.Entity.Client">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAACAAAAAAAAAAAASAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\Client.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ecommerce.Domain.Entity.CredCard">
+    <Position X="6.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\CredCard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ecommerce.Domain.Entity.ItemCart">
+    <Position X="4" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\ItemCart.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ecommerce.Domain.Entity.Order">
+    <Position X="8" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAABAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\Order.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ecommerce.Domain.Entity.Payment" Collapsed="true">
+    <Position X="2" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgBAAAAAA=</HashCode>
+      <FileName>Entity\Payment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ecommerce.Domain.Entity.Product">
+    <Position X="6.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACIAAAUAAAAAAAAAAAAAAAAAAAAgAAAABAAA=</HashCode>
+      <FileName>Entity\Product.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
