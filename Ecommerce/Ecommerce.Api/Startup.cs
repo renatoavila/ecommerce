@@ -37,6 +37,9 @@ namespace Ecommerce.Api
             Configuration.GetSection("DefaultConnection");
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            //HTTP Client
+            services.AddHttpClient();
+
             // Configurando o serviço de documentação do Swagger
             services.AddSwaggerGen(c =>
             {
@@ -84,6 +87,18 @@ namespace Ecommerce.Api
             services.AddSingleton<IProductRepository, ProductRepository>();
             services.AddTransient<IProductBusiness, ProductBusiness>();
             services.AddTransient<IProductServices, ProductServices>();
+
+            services.AddSingleton<IStockRepository, StockRepository>();
+            services.AddTransient<IStockBusiness, StockBusiness>();
+            services.AddTransient<IStockServices, StockService>();
+
+            services.AddSingleton<IOrdersRepository, OrdersRepository>();
+            services.AddTransient<IOrdersBusiness, OrdersBusiness>();
+            services.AddTransient<IOrdersServices, OrdersService>();
+
+            services.AddSingleton<IPaymentRepository, PaymentRepository>();
+            services.AddTransient<IPaymentBusiness, PaymentBusiness>();
+            services.AddTransient<IPaymentServices, PaymentService>();
 
         }
 

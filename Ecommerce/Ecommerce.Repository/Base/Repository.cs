@@ -32,6 +32,10 @@ namespace Ecommerce.Repository.Base
         {
             using (var conn = new ConnectionFactory().GetConnection(_config.GetConnectionString("DefaultConnection")))
             {
+                if (entity.Id == 0)
+                {
+                    entity.Id = Get(entity.Key)?.Id ?? 0;
+                }
                 return conn.Update<T>(entity);
             }
         }

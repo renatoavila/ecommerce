@@ -54,6 +54,12 @@ namespace Ecommerce.Api.Controllers
             try
             {
                 _shopCartServices.AddItem(new ShopCart() { Key = key }, itemCart);
+
+                if (itemCart.Invalid)
+                {
+                    return BadRequest(new { notifications = itemCart.GetNotification() });
+                }
+
                 return Ok(new { key = itemCart.Key });
             }
             catch (Exception exception)

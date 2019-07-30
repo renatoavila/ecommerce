@@ -15,6 +15,6 @@ namespace Ecommerce.Domain.Entity
         [Write(false)]
         public Product product { get; set; }
         [JsonIgnore]
-        public int productId { get; set; }
+        public long productId { get; set; }
     }
 }

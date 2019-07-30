@@ -13,11 +13,14 @@ namespace Ecommerce.Business
     {
         private readonly IShopCartRepository _shopCartRepository;
         private readonly IItemCartRepository _itemCartRepository;
+        private readonly IStockBusiness _stockBusiness;
         public ShopCartBusiness(IShopCartRepository shopCartRepository,
-                                IItemCartRepository itemCartRepository)
+                                IItemCartRepository itemCartRepository,
+                                 IStockBusiness stockBusiness)
         {
             _shopCartRepository = shopCartRepository;
             _itemCartRepository = itemCartRepository;
+            _stockBusiness = stockBusiness;
         }
 
         public ShopCart Create()
@@ -53,6 +56,11 @@ namespace Ecommerce.Business
         {
             shopCart = _shopCartRepository.Get(shopCart.Key);
             return shopCart.Id;
+        }
+
+        public bool StockValidate(ItemCart item, Operation operation)
+        {
+          return (_stockBusiness.ChangeStock(item, operation) > 0);
         }
     }
 }

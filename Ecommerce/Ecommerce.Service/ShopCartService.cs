@@ -23,7 +23,14 @@ namespace Ecommerce.Service
 
         public void AddItem(ShopCart shopCart, ItemCart itemCart)
         {
-            _shopCartBusiness.AddItem(shopCart, itemCart);
+            itemCart.AddNotification(!_shopCartBusiness.
+                                       StockValidate(itemCart,
+                                                      Domain.Enum.Operation.Reserved), "");
+            if (itemCart.Valid)
+            {
+              _shopCartBusiness.AddItem(shopCart, itemCart);
+            }
+           
         }
 
         public List<ItemCart> ListItem(ShopCart shopCart)

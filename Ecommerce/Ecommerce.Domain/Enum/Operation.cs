@@ -8,6 +8,9 @@ namespace Ecommerce.Domain.Enum
     {
         Increment         =1, //Adiciona
         Decrement        =2, //Subtrai
+        Reserved = 3,
+        Payment =4,
+        NoPayment = 5
 
     }
 }

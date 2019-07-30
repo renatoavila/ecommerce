@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 
+
 namespace Ecommerce.Api.Controllers
 {
     [Route("api/[controller]")]
@@ -21,6 +22,7 @@ namespace Ecommerce.Api.Controllers
             _logger = logger; 
         }
 
+        
         // Get api/Client
         /// <summary>
         /// Return a Client
