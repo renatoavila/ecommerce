@@ -9,6 +9,15 @@ namespace Ecommerce.Domain.Entity
     [Table("Shopcart")]
     public class ShopCart : Base.Entity
     {
+        public ShopCart()
+        {
+        }
+        public ShopCart(DateTime date, ShopState state)
+        {
+            Date = date;
+            State = state;
+        }
+
         public DateTime Date { get; set; }
         public ShopState State { get; set; }
     }

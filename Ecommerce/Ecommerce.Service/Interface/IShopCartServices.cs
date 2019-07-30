@@ -1,17 +1,15 @@
 ﻿using Ecommerce.Domain.Entity;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace Ecommerce.Business.Interface
+namespace Ecommerce.Service.Interface
 {
-    public interface IShopCartBusiness
+    public interface IShopCartServices
     {
         ShopCart Create();
         void AddItem(ShopCart shopCart, ItemCart itemCart);
         List<ItemCart> ListItem(ShopCart shopCart);
         decimal TotalPrice(ShopCart shopCart);
-        void RemoveItem(ItemCart item);
-         
+        void RemoveItem(ItemCart item); 
     }
 }

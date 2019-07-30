@@ -69,11 +69,21 @@ namespace Ecommerce.Api
         public void DependencyInjection(IServiceCollection services)
         {
 
-            services.AddTransient<IAddressRepository, AddressRepository>();
+            services.AddSingleton<IAddressRepository, AddressRepository>();
 
-            services.AddTransient<IClientRepository, ClientRepository>();
+            services.AddSingleton<IShopCartRepository, ShopCartRepository>();
+            services.AddTransient<IShopCartBusiness, ShopCartBusiness>();
+            services.AddTransient<IShopCartServices, ShopCartServices>();
+
+            services.AddTransient<IItemCartRepository, ItemCartRepository>();
+
+            services.AddSingleton<IClientRepository, ClientRepository>();
             services.AddTransient<IClientBusiness, ClientBusiness>();
             services.AddTransient<IClientServices, ClientServices>();
+
+            services.AddSingleton<IProductRepository, ProductRepository>();
+            services.AddTransient<IProductBusiness, ProductBusiness>();
+            services.AddTransient<IProductServices, ProductServices>();
 
         }
 

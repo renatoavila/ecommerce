@@ -11,14 +11,14 @@ namespace Ecommerce.Business
     public class ProductBusiness : IProductBusiness
     {
 
-        private readonly ProductRepository _productRepository;
-        public ProductBusiness(ProductRepository productRepository)
+        private readonly IProductRepository _productRepository;
+        public ProductBusiness(IProductRepository productRepository)
         {
             _productRepository = productRepository;
         }
         public Guid AddProduct(Product product)
         {
-            _productRepository.Add(product);
+            _productRepository.Insert(product);
 
             return product.Key;
         }

@@ -28,13 +28,6 @@ namespace Ecommerce.Domain.Entity
         /// Preco de venda do produto
         /// </summary>
         public decimal SalePrice { get; set; }
-        /// <summary>
-        /// Estoque atualizado do produto
-        /// </summary>
-        public  int UptadedStock { get; set; }
-        /// <summary>
-        /// Peso do produto
-        /// </summary>
-        public double Weight { get; set; }
+
     }
 }

@@ -31,7 +31,7 @@
   <Class Name="Ecommerce.Domain.Entity.ItemCart">
     <Position X="6" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>IAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>IEAAABAAAgAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Entity\ItemCart.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -52,15 +52,16 @@
   <Class Name="Ecommerce.Domain.Entity.Product">
     <Position X="6.25" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAACIAAAUAAAAAAAAAAAAAAAAAAAAgAAAABAAA=</HashCode>
+      <HashCode>AAAAAAAACAAAAUAAAAAAAAAAAAAAAAAAAAgAAAABAAA=</HashCode>
       <FileName>Entity\Product.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Ecommerce.Domain.Entity.ShopCart">
+  <Class Name="Ecommerce.Domain.Entity.Stock">
     <Position X="4.25" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAABAAAAAA=</HashCode>
-      <FileName>Entity\ShopCart.cs</FileName>
+      <HashCode>AAAAABAAAgAAAAAAAAAAAAAQAAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>Entity\Stock.cs</FileName>
+      <NewMemberFileName>Entity\ShopCart.cs</NewMemberFileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

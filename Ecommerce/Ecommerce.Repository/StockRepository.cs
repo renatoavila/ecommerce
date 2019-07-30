@@ -2,14 +2,13 @@
 using Ecommerce.Repository.Base;
 using Ecommerce.Repository.Interface;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
+
 
 namespace Ecommerce.Repository
 {
-    public class ShopCartRepository : Repository<ShopCart>, IShopCartRepository
+    public class StockRepository : Repository<Stock>, IStockRepository
     {
-        public ShopCartRepository(IConfiguration config) : base(config)
+        public StockRepository(IConfiguration config) : base(config)
         {
         }
 

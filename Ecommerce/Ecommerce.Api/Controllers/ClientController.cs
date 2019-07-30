@@ -18,7 +18,7 @@ namespace Ecommerce.Api.Controllers
                                 ILogger<ClientController> logger)
         {
             _clientServices = clientServices;
-            _clientServices = clientServices; 
+            _logger = logger; 
         }
 
         // Get api/Client
