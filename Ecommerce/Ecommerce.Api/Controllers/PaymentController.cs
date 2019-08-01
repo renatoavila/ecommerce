@@ -26,5 +26,49 @@ namespace Ecommerce.Api.Controllers
             _paymentServices = paymentServices;
             _logger = logger;
         }
+
+        [HttpPost("billet")]
+        public ActionResult<Guid> Post([FromBody] Billet billet)
+        {
+            try
+            {
+                Payment payment = _paymentServices.Execute(billet);
+
+                if (billet.Invalid)
+                {
+                    return BadRequest(new { notifications = billet.GetNotification() });
+                }
+
+                return Ok(payment);
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError(exception, exception.Message);
+                return new StatusCodeResult(500);
+            }
+
+        }
+
+        [HttpPost("credcard")]
+        public ActionResult<Guid> Post([FromBody] CredCard credCard)
+        {
+            try
+            {
+                Payment payment = _paymentServices.Execute(credCard);
+
+                if (credCard.Invalid)
+                {
+                    return BadRequest(new { notifications = credCard.GetNotification() });
+                }
+
+                return Ok(payment);
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError(exception, exception.Message);
+                return new StatusCodeResult(500);
+            }
+
+        }
     }
 }

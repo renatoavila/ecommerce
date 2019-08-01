@@ -8,7 +8,8 @@ namespace Ecommerce.Business.Interface
 {
     public interface IOrdersBusiness
     {
-        Order CreateOrder(Guid clientKey, Guid shopCartKey);
+        Order CreateOrder(Order order);
+        Order Get(Guid key);
 
         Client GetClient(Guid key);
 

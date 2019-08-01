@@ -7,5 +7,6 @@ namespace Ecommerce.Service.Interface
 {
     public interface IPaymentServices
     {
+        Payment Execute(Payment payment);
     }
 }

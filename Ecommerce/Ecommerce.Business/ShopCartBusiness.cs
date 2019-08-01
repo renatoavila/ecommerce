@@ -58,9 +58,19 @@ namespace Ecommerce.Business
             return shopCart.Id;
         }
 
-        public bool StockValidate(ItemCart item, Operation operation)
+        public bool ReservedStock(ItemCart item)
         {
-          return (_stockBusiness.ChangeStock(item, operation) > 0);
+           return _stockBusiness.ReservedStock(item);
+        }
+
+        public void ReverseStock(ItemCart item)
+        {
+            _stockBusiness.ReverseStock(item);
+        }
+
+        public ItemCart GetItem(Guid key)
+        {
+          return _itemCartRepository.Get(key);
         }
     }
 }

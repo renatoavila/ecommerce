@@ -3,6 +3,7 @@ using Ecommerce.Service.Interface;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Collections.Generic;
 
 namespace Ecommerce.Api.Controllers
 {
@@ -29,12 +30,33 @@ namespace Ecommerce.Api.Controllers
         /// <returns>Return a Product</returns>
         /// <response code="200">Return a Product</response>
         /// <response code="500">Internal error</response>
-        [HttpGet]
-        public ActionResult<Product> Get(Guid key)
+        [HttpGet("{key}")]
+        public ActionResult<Product> Get([FromRoute] Guid key)
         {
             try
             { 
                 return Ok(_productServices.GetProduct(key));
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError(exception, exception.Message);
+                return new StatusCodeResult(500);
+            }
+        }
+
+        // Get api/Product
+        /// <summary>
+        /// Return list Product
+        /// </summary>
+        /// <returns>Return list Product</returns>
+        /// <response code="200">Return list Product</response>
+        /// <response code="500">Internal error</response>
+        [HttpGet]
+        public ActionResult<List<Product>> Get()
+        {
+            try
+            {
+                return Ok(_productServices.GetProduct());
             }
             catch (Exception exception)
             {

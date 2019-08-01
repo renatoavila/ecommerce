@@ -48,7 +48,7 @@ namespace Ecommerce.Api.Controllers
             }
         }
 
-        [HttpPost("additem/{key}")]
+        [HttpPost("{key}/additem")]
         public ActionResult<Guid> AddItem([FromRoute] Guid key, [FromBody] ItemCart itemCart)
         {
             try
@@ -69,7 +69,7 @@ namespace Ecommerce.Api.Controllers
             }
         }
 
-        [HttpGet("listitem/{key}")]
+        [HttpGet("{key}/listitem")]
         public ActionResult<List<ItemCart>> ListItem([FromRoute] Guid key)
         {
             try
@@ -83,7 +83,7 @@ namespace Ecommerce.Api.Controllers
             } 
         }
 
-        [HttpGet("totalprice/{key}")]
+        [HttpGet("{key}/totalprice")]
         public ActionResult<decimal> TotalPrice([FromRoute] Guid key)
         {
             try

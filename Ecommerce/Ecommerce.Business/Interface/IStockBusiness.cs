@@ -7,15 +7,19 @@ using System.Text;
 namespace Ecommerce.Business.Interface
 {
     public interface IStockBusiness
+    {
+        void StockKepping(Product product, int AmountStock);
 
-    {/// <summary>
-     /// 
-     /// </summary>
-     /// <param name="item"></param>
-     /// <param name="operation"></param>
-     /// <returns></returns>
-        int ChangeStock(ItemCart item, Operation operation);
-        int ChangeStock(Product product, int amount, Operation operation);
+        void PaymentStock(ItemCart item);
 
-    }
+        void PaymentStock(Product product, int amount);
+
+        bool ReservedStock(ItemCart item);
+
+        bool ReservedStock(Product product, int amount);
+
+        void ReverseStock(ItemCart item);
+
+        void ReverseStock(Product product, int amount); 
+}
 }

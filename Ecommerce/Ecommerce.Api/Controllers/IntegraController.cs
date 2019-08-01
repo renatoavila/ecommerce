@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Ecommerce.Integration;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -13,23 +14,23 @@ namespace Ecommerce.Api.Controllers
     [ApiController]
     public class IntegraController : ControllerBase
     {
-            private readonly IHttpClientFactory _httpClientFactory;
+        private readonly IHttpClientFactory _httpClientFactory;
 
-            public IntegraController(IHttpClientFactory httpClientFactory)
-            {
-                _httpClientFactory = httpClientFactory;
-            }
-
-            [HttpGet]
-            [Route("/api/activity/")]
-            public async Task<Board> GetRandomActivity()
-            {
-                var client = _httpClientFactory.CreateClient();
-
-                var response = await client.GetStringAsync("http://www.boredapi.com/api/activity/");
-         
-                return JsonConvert.DeserializeObject<Board>(response);
+        public IntegraController(IHttpClientFactory httpClientFactory)
+        {
+            _httpClientFactory = httpClientFactory;
         }
-      
+
+        [HttpGet]
+        [Route("/api/activity/")]
+        public async Task<Board> GetRandomActivity()
+        {
+            var client = _httpClientFactory.CreateClient();
+
+            var response = await client.GetStringAsync("http://www.boredapi.com/api/activity/");
+
+            return JsonConvert.DeserializeObject<Board>(response);
+        }
+
     }
 }

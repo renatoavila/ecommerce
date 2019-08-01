@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Ecommerce.Business;
 using Ecommerce.Business.Interface;
 using Ecommerce.Domain.Entity;
+using Ecommerce.Integration;
+using Ecommerce.Integration.Inferface;
 using Ecommerce.Repository;
 using Ecommerce.Repository.Interface;
 using Ecommerce.Service;
@@ -99,6 +101,9 @@ namespace Ecommerce.Api
             services.AddSingleton<IPaymentRepository, PaymentRepository>();
             services.AddTransient<IPaymentBusiness, PaymentBusiness>();
             services.AddTransient<IPaymentServices, PaymentService>();
+
+            services.AddTransient<IBilletIntegration, BilletIntegration>();
+            services.AddTransient<ICredCardIntegration, CredCardIntegration>();
 
         }
 

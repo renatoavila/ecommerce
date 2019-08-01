@@ -7,6 +7,6 @@ namespace Ecommerce.Service.Interface
 {
     public interface IOrdersServices
     {
-        Order CreateOrder(Guid clientKey, Guid shopCartKey);
+        Order CreateOrder(Order order);
     }
 }

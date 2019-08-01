@@ -28,6 +28,13 @@ namespace Ecommerce.Repository
             return ret;
         }
 
+        public ItemCart Get(Guid key)
+        {
+            ItemCart ret = base.Get(key);
+            ret.product = _productRepository.Get(ret.productId);
+            return ret;
+        }
+
 
         public override long Insert(ItemCart itemCart)
         {

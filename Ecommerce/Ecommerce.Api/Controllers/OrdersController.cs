@@ -27,7 +27,6 @@ namespace Ecommerce.Api.Controllers
             _logger = logger;
         }
 
-
         // POST api/Client
         /// <summary>
         /// Insert new Order
@@ -38,12 +37,12 @@ namespace Ecommerce.Api.Controllers
         /// <response code="400">Fail request</response>
         /// <response code="500">Internal error</response>
         [HttpPost]
-        public ActionResult<Order> Post([FromBody] Guid clientKey, Guid shopCartKey)
+        public ActionResult<Order> Post([FromBody] Order order)
         {
             try
             {
-                Order  order = _ordersServices.CreateOrder(clientKey, shopCartKey);
-                return Ok(new { Order = order });
+                var  ret = _ordersServices.CreateOrder(order);
+                return Ok(new { Order = ret });
             }
             catch (Exception exception)
             {
@@ -52,10 +51,5 @@ namespace Ecommerce.Api.Controllers
             }
 
         }
-
-
-
-
-
     }
 }

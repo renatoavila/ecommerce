@@ -20,5 +20,8 @@ namespace Ecommerce.Domain.Entity
 
         public DateTime Date { get; set; }
         public ShopState State { get; set; }
+
+        [Write(false)]
+        public Order Order { get; set; }
     }
 }

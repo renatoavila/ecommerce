@@ -26,11 +26,10 @@ namespace Ecommerce.Business.Interface
 
         }
 
-        public Order CreateOrder(Guid clientKey, Guid shopCartKey)
-        {
-            Order order = new Order();
-            order.client = this.GetClient(clientKey);
-            order.shopCart = this.GetShopCart(shopCartKey);
+        public Order CreateOrder(Order order)
+        { 
+            order.client = this.GetClient(order.client.Key);
+            order.shopCart = this.GetShopCart(order.shopCart.Key);
             order.clientId = order.client.Id;
             order.shopCartId = order.shopCart.Id;
             order.Number = GetNumberOrder(order.shopCartId);
@@ -40,6 +39,14 @@ namespace Ecommerce.Business.Interface
             return order;
         }
 
+        public Order Get(Guid key)
+        {
+            Order ret = _ordersRepository.Get(key);
+            ret.client = _clientRepository.Get(ret.clientId);
+            ret.shopCart = _shopcartRepository.Get(ret.shopCartId);
+            return ret;
+        }
+
         public Client GetClient(Guid key)
         {
             return _clientRepository.Get(key);
@@ -47,8 +54,7 @@ namespace Ecommerce.Business.Interface
 
         public string GetNumberOrder(long id)
         {
-            var strOrder = new string('0', 8) + id.ToString();
-            return DateTime.Now.Year + strOrder.Substring(strOrder.Length - 8, strOrder.Length);
+            return DateTime.Now.Year+ id.ToString("00000000");
         }
 
         public ShopCart GetShopCart(Guid key)

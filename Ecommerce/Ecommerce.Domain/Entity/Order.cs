@@ -12,7 +12,6 @@ namespace Ecommerce.Domain.Entity
         {
 
         }
-
         public string Number { get; set; }
         public DateTime Date { get; set; }
         public OrderState orderState { get; set; }

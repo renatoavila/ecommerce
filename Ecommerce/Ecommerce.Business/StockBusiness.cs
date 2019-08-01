@@ -1,64 +1,100 @@
 ﻿using Ecommerce.Domain.Entity;
 using Ecommerce.Domain.Enum;
 using Ecommerce.Repository.Interface;
-using System.Linq;
 
 namespace Ecommerce.Business.Interface
 {
-    public class StockBusiness: IStockBusiness
-
+    public class StockBusiness : IStockBusiness
     {
-
         private readonly IStockRepository _stockRepository;
-      
-        public StockBusiness(IStockRepository stockRepository)
+        private readonly IProductRepository _productRepository;
+
+        public StockBusiness(IStockRepository stockRepository,
+                             IProductRepository productRepository)
         {
             _stockRepository = stockRepository;
-         
+            _productRepository = productRepository;
         }
-        public int ChangeStock(ItemCart item, Operation operation)
+
+        public void StockKepping(Product product, int AmountStock)
         {
-            return ChangeStock(item.product, item.Amount, operation);
-          
-        }
-        public int ChangeStock(Product product, int amount, Operation operation)
-        {
-            var stockProduct = _stockRepository.Get(product.Id);
-
-            //Existe produto no stock
-            bool IsStock = stockProduct == null? false: true;
-
-            stockProduct.product = product;
-            stockProduct.productId = product.Id;
-
-            switch (operation)
+            product.Id = GetProductId(product);
+            var stockProduct = _stockRepository.GetByProduct(product.Id);
+            if ((stockProduct == null) ||
+               (stockProduct.Id == 0))
             {
-                case Operation.Increment: //Entrada produto
-                    stockProduct.AmountStock += amount;
-                    break;
-                case Operation.NoPayment: //falta de pagamento
-                    stockProduct.AmountReserved -= amount;
-                    stockProduct.AmountStock += amount;
-                    break;
-                case Operation.Reserved: //Reservar realizada
-                    stockProduct.AmountReserved += amount;
-                    break;
-                case Operation.Payment: //pagamento realizado
-                    stockProduct.AmountReserved -= amount;
-                    stockProduct.AmountStock -= amount;
-                    break;
-            }
-            if (IsStock)
-            {
-                _stockRepository.Update(stockProduct);
+                stockProduct = new Stock();
+                stockProduct.productId = product.Id;
+                stockProduct.AmountStock = AmountStock;
+                stockProduct.AmountReserved = 0;
+                _stockRepository.Insert(stockProduct);
             }
             else
             {
-                _stockRepository.Insert(stockProduct);
+                stockProduct.AmountStock += AmountStock;
+                _stockRepository.Update(stockProduct);
             }
-            // retorno do saldo do estoque, se negativo notificar e não permitir
-            return (stockProduct.AmountStock - stockProduct.AmountReserved);
         }
+        public void PaymentStock(ItemCart item)
+        {
+            PaymentStock(item.product, item.Amount);
+        }
+        public void PaymentStock(Product product, int amount)
+        {
+            product.Id = GetProductId(product);
+            var stockProduct = _stockRepository.GetByProduct(product.Id);
 
+            //Existe produto no stock
+            if ((stockProduct != null) ||
+                (stockProduct.Id > 0))
+            {
+                stockProduct.AmountReserved -= amount;
+                stockProduct.AmountStock -= amount;
+                _stockRepository.Update(stockProduct);
+            }
+        }
+        public bool ReservedStock(ItemCart item)
+        {
+            return ReservedStock(item.product, item.Amount);
+        }
+        public bool ReservedStock(Product product, int amount)
+        {
+            product.Id = GetProductId(product);
+            var stockProduct = _stockRepository.GetByProduct(product.Id);
+
+            //Existe produto no stock
+            if ((stockProduct == null) ||
+                (stockProduct.Id == 0) ||
+                (stockProduct.AmountStock < stockProduct.AmountReserved + amount))
+            {
+                return false;
+            }
+            else
+            {
+                stockProduct.AmountReserved += amount;
+                return _stockRepository.Update(stockProduct);
+            }
+        }
+        public void ReverseStock(ItemCart item)
+        {
+            ReverseStock(item.product, item.Amount);
+        }
+        public void ReverseStock(Product product, int amount)
+        {
+            product.Id = GetProductId(product);
+            var stockProduct = _stockRepository.GetByProduct(product.Id);
+
+            //Existe produto no stock
+            if ((stockProduct != null) &&
+                (stockProduct.Id != 0))
+            {
+                stockProduct.AmountReserved -= amount;
+                _stockRepository.Update(stockProduct);
+            }
+        }
+        private long GetProductId(Product product)
+        {
+            return _productRepository.Get(product.Key)?.Id ?? 0;
+        }
     }
 }

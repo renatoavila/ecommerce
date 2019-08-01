@@ -4,7 +4,7 @@ using Ecommerce.Repository;
 using Ecommerce.Repository.Interface;
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 
 namespace Ecommerce.Business
 {
@@ -25,6 +25,11 @@ namespace Ecommerce.Business
         public Product GetProduct(Guid key)
         {
             return _productRepository.Get(key);
+        }
+
+        public List<Product> GetProduct()
+        {
+            return _productRepository.GetAll().ToList();
         }
         public Guid UpdateProduct(Product product)
         {

@@ -7,8 +7,8 @@ namespace Ecommerce.Service.Interface
     public interface IProductServices
     {
         Product GetProduct(Guid key);
+        List<Product> GetProduct();
         Guid AddProduct(Product product);
-
         Guid UpdateProduct(Product product);
     }
 }

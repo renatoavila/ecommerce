@@ -19,7 +19,8 @@ namespace Ecommerce.Service
 
         public int ChangeStock(Product product, int amount, Operation operation)
         {
-           return _stockBusiness.ChangeStock(product, amount, Operation.Increment);
+            return 0;
+           //return _stockBusiness.ChangeStock(product, amount, Operation.Increment);
         }
     }
 }

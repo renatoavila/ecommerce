@@ -35,7 +35,6 @@ namespace Ecommerce.Api.Controllers
         /// <response code="200">Return saldo estoque </response>
         /// <response code="400">Fail request</response>
         /// <response code="500">Internal error</response>
-    
         [HttpPost]
         public ActionResult<Guid> AddItem([FromBody] Product product, int amount, Operation operation)
         {
@@ -51,12 +50,6 @@ namespace Ecommerce.Api.Controllers
                 return new StatusCodeResult(500);
             }
         }
-
-
-
-
-
-
 
     }
 }

@@ -17,9 +17,9 @@ namespace Ecommerce.Service
             _ordersBusiness = orderskBusiness;
         }
 
-        public Order CreateOrder(Guid clientKey, Guid shopCartKey)
+        public Order CreateOrder(Order order)
         {
-           return _ordersBusiness.CreateOrder(clientKey, shopCartKey);
+           return _ordersBusiness.CreateOrder(order);
         }
     }
 }

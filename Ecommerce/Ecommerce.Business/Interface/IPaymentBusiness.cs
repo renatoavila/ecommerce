@@ -8,6 +8,7 @@ namespace Ecommerce.Business.Interface
 {
     public interface IPaymentBusiness
     {
-
+        long Insert(Payment payment);
+        bool Update(Payment payment);
     }
 }

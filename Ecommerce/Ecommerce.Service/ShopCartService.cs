@@ -15,7 +15,7 @@ namespace Ecommerce.Service
         {
             _shopCartBusiness = shopCartBusiness;
         }
-         
+
         public ShopCart Create()
         {
             return _shopCartBusiness.Create();
@@ -23,14 +23,14 @@ namespace Ecommerce.Service
 
         public void AddItem(ShopCart shopCart, ItemCart itemCart)
         {
-            itemCart.AddNotification(!_shopCartBusiness.
-                                       StockValidate(itemCart,
-                                                      Domain.Enum.Operation.Reserved), "");
+            itemCart.AddNotification(!_shopCartBusiness.ReservedStock(itemCart),
+                                    "Não tem estoque");
+
             if (itemCart.Valid)
             {
-              _shopCartBusiness.AddItem(shopCart, itemCart);
+                _shopCartBusiness.AddItem(shopCart, itemCart);
             }
-           
+
         }
 
         public List<ItemCart> ListItem(ShopCart shopCart)
@@ -43,9 +43,14 @@ namespace Ecommerce.Service
             return _shopCartBusiness.TotalPrice(shopCart);
         }
 
-        public void RemoveItem(ItemCart item)
+        public void RemoveItem(ItemCart itemCart)
         {
-            _shopCartBusiness.RemoveItem(item);
+            if(itemCart.Id == 0)
+            {
+                itemCart = _shopCartBusiness.GetItem(itemCart.Key);
+            }
+            _shopCartBusiness.ReverseStock(itemCart);
+            _shopCartBusiness.RemoveItem(itemCart);
         }
     }
 }

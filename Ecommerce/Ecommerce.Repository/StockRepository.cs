@@ -2,7 +2,7 @@
 using Ecommerce.Repository.Base;
 using Ecommerce.Repository.Interface;
 using Microsoft.Extensions.Configuration;
-
+using System.Linq;
 
 namespace Ecommerce.Repository
 {
@@ -12,5 +12,9 @@ namespace Ecommerce.Repository
         {
         }
 
+        public Stock GetByProduct(long productId)
+        {
+            return base.GetAll().Where(x => x.productId == productId).FirstOrDefault();
+        }
     }
 }

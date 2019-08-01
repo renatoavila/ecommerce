@@ -11,11 +11,10 @@ namespace Ecommerce.Business.Interface
         ShopCart Create();
         void AddItem(ShopCart shopCart, ItemCart itemCart);
         List<ItemCart> ListItem(ShopCart shopCart);
+        ItemCart GetItem(Guid key);
         decimal TotalPrice(ShopCart shopCart);
         void RemoveItem(ItemCart item);
-        bool StockValidate(ItemCart item, Operation operation);
-
-
-         
+        bool ReservedStock(ItemCart item);
+        void ReverseStock(ItemCart item);
     }
 }
