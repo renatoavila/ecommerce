@@ -12,14 +12,18 @@ namespace Ecommerce.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'ShopCartController'
     public class ShopCartController : ControllerBase
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'ShopCartController'
     {
 
         private readonly IShopCartServices _shopCartServices;
 
         private readonly ILogger<ShopCartController> _logger;
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'ShopCartController.ShopCartController(IShopCartServices, ILogger<ShopCartController>)'
         public ShopCartController(IShopCartServices shopCartServices,
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'ShopCartController.ShopCartController(IShopCartServices, ILogger<ShopCartController>)'
                                 ILogger<ShopCartController> logger)
         {
             _shopCartServices = shopCartServices;
@@ -49,7 +53,9 @@ namespace Ecommerce.Api.Controllers
         }
 
         [HttpPost("{key}/additem")]
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'ShopCartController.AddItem(Guid, ItemCart)'
         public ActionResult<Guid> AddItem([FromRoute] Guid key, [FromBody] ItemCart itemCart)
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'ShopCartController.AddItem(Guid, ItemCart)'
         {
             try
             {
@@ -70,7 +76,9 @@ namespace Ecommerce.Api.Controllers
         }
 
         [HttpGet("{key}/listitem")]
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'ShopCartController.ListItem(Guid)'
         public ActionResult<List<ItemCart>> ListItem([FromRoute] Guid key)
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'ShopCartController.ListItem(Guid)'
         {
             try
             { 
@@ -84,7 +92,9 @@ namespace Ecommerce.Api.Controllers
         }
 
         [HttpGet("{key}/totalprice")]
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'ShopCartController.TotalPrice(Guid)'
         public ActionResult<decimal> TotalPrice([FromRoute] Guid key)
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'ShopCartController.TotalPrice(Guid)'
         {
             try
             {
@@ -98,7 +108,9 @@ namespace Ecommerce.Api.Controllers
         }
 
         [HttpDelete("deleteitem/{key}")]
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'ShopCartController.RemoveItem(Guid)'
         public ActionResult<string> RemoveItem([FromRoute] Guid key)
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'ShopCartController.RemoveItem(Guid)'
         {
             try
             {

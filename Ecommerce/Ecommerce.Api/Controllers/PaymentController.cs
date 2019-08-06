@@ -13,14 +13,18 @@ namespace Ecommerce.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'PaymentController'
     public class PaymentController : ControllerBase
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'PaymentController'
     {
 
         private readonly IPaymentServices _paymentServices;
 
         private readonly ILogger<PaymentController> _logger;
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'PaymentController.PaymentController(IPaymentServices, ILogger<PaymentController>)'
         public PaymentController(IPaymentServices paymentServices,
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'PaymentController.PaymentController(IPaymentServices, ILogger<PaymentController>)'
                                 ILogger<PaymentController> logger)
         {
             _paymentServices = paymentServices;
@@ -28,7 +32,9 @@ namespace Ecommerce.Api.Controllers
         }
 
         [HttpPost("billet")]
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'PaymentController.Post(Billet)'
         public ActionResult<Guid> Post([FromBody] Billet billet)
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'PaymentController.Post(Billet)'
         {
             try
             {
@@ -50,7 +56,9 @@ namespace Ecommerce.Api.Controllers
         }
 
         [HttpPost("credcard")]
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'PaymentController.Post(CredCard)'
         public ActionResult<Guid> Post([FromBody] CredCard credCard)
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'PaymentController.Post(CredCard)'
         {
             try
             {

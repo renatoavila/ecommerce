@@ -42,28 +42,21 @@ namespace Ecommerce.Service
                 {
                     ResponsePaymentSlipTransation response =
                         _billetIntegration.Execute(
-                            new RequestPaymentSlipTransaction()
-                                {
-
-                                }
+                            new RequestPaymentSlipTransaction() {
+                                reference = payment.Order.Number
+                            }
                             );
                     payment.State = "ok";
                     payment.PaymentType = PaymentType.Billet;
-                    //todo: (Billet)payment.code = response.paymentSlipTransaction.paymentSlip.barCode;
                 }
                 else if (payment is CredCard)
                 {
                     ResponseCreditCardTransaction response =
                        _credCardIntegration.Execute(
-                           new RequestCreditCardTransation()
-                           {
-
-                           }
-                           );
-                    payment.State = "ok";  
+                           new RequestCreditCardTransation() { reference = payment.Order.Number,
+                                                               number = ((CredCard)payment).Number});
+                    payment.State = "ok";
                     payment.PaymentType = PaymentType.CredCard;
-                    // response.creditCardTransaction.affiliationKey;
-                    //insert CredCard
                 }
                 payment.Id = idPayment;
                 _paymentBusiness.Update((Payment)payment);

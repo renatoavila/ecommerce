@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Ecommerce.Domain.Entity
 {
-    [Table("Shopcart")]
+    [Table("shopcart")]
     public class ShopCart : Base.Entity
     {
         public ShopCart()
@@ -14,10 +14,10 @@ namespace Ecommerce.Domain.Entity
         }
         public ShopCart(DateTime date, ShopState state)
         {
-            Date = date;
-            State = state;
+            this.Date = date;
+            this.State = state;
         }
-
+        
         public DateTime Date { get; set; }
         public ShopState State { get; set; }
 

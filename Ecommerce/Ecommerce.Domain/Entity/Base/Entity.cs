@@ -4,6 +4,7 @@ using Ecommerce.Domain.Notifications;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Ecommerce.Domain.Entity.Base
 {
@@ -13,20 +14,20 @@ namespace Ecommerce.Domain.Entity.Base
         [JsonIgnore]
         public long Id { get; set; }
 
-        private Guid key;
+        private Guid _key;
         public Guid Key
         {
             get
             {
-                if (key == null || key == Guid.Empty)
+                if (_key == null || _key == Guid.Empty)
                 {
-                    key = Guid.NewGuid();
+                    _key = Guid.NewGuid();
                 }
-                return key;
+                return _key;
             }
             set
             {
-                key = value;
+                _key = value;
             }
         }
     }

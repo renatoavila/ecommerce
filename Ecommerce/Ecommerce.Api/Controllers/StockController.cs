@@ -13,14 +13,18 @@ namespace Ecommerce.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'StockController'
     public class StockController : ControllerBase
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'StockController'
     {
 
         private readonly IStockServices _stockServices;
 
         private readonly ILogger<StockController> _logger;
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'StockController.StockController(IStockServices, ILogger<StockController>)'
         public StockController(IStockServices stockServices,
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'StockController.StockController(IStockServices, ILogger<StockController>)'
                                 ILogger<StockController> logger)
         {
             _stockServices = stockServices;

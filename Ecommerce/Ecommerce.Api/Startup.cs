@@ -24,16 +24,24 @@ using Swashbuckle.AspNetCore.Swagger;
 
 namespace Ecommerce.Api
 {
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'Startup'
     public class Startup
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'Startup'
     {
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'Startup.Startup(IConfiguration)'
         public Startup(IConfiguration configuration)
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'Startup.Startup(IConfiguration)'
         {
             Configuration = configuration;
         }
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'Startup.Configuration'
         public IConfiguration Configuration { get; }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'Startup.Configuration'
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'Startup.ConfigureServices(IServiceCollection)'
         public void ConfigureServices(IServiceCollection services)
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'Startup.ConfigureServices(IServiceCollection)'
         {
             DependencyInjection(services);
             Configuration.GetSection("DefaultConnection");
@@ -71,7 +79,9 @@ namespace Ecommerce.Api
 
        
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'Startup.DependencyInjection(IServiceCollection)'
         public void DependencyInjection(IServiceCollection services)
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'Startup.DependencyInjection(IServiceCollection)'
         {
 
             services.AddSingleton<IAddressRepository, AddressRepository>();
@@ -108,7 +118,9 @@ namespace Ecommerce.Api
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'Startup.Configure(IApplicationBuilder, IHostingEnvironment)'
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'Startup.Configure(IApplicationBuilder, IHostingEnvironment)'
         {
             if (env.IsDevelopment())
             {

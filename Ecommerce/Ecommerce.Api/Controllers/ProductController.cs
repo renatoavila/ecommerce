@@ -9,13 +9,17 @@ namespace Ecommerce.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'ProductController'
     public class ProductController : ControllerBase
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'ProductController'
     {
         private readonly IProductServices _productServices;
 
         private readonly ILogger<ProductController> _logger;
 
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member 'ProductController.ProductController(IProductServices, ILogger<ProductController>)'
         public ProductController(IProductServices productServices, 
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member 'ProductController.ProductController(IProductServices, ILogger<ProductController>)'
                                 ILogger<ProductController> logger)
         {
             _productServices = productServices;
@@ -66,6 +70,7 @@ namespace Ecommerce.Api.Controllers
         }
 
         // POST api/Product
+#pragma warning disable CS1572 // XML comment has a param tag for 'Product', but there is no parameter by that name
         /// <summary>
         /// Insert new product
         /// </summary>
@@ -75,7 +80,10 @@ namespace Ecommerce.Api.Controllers
         /// <response code="400">Fail request</response>
         /// <response code="500">Internal error</response>
         [HttpPost]
+#pragma warning restore CS1572 // XML comment has a param tag for 'Product', but there is no parameter by that name
+#pragma warning disable CS1573 // Parameter 'product' has no matching param tag in the XML comment for 'ProductController.Post(Product)' (but other parameters do)
         public ActionResult<Guid> Post([FromBody] Product product)
+#pragma warning restore CS1573 // Parameter 'product' has no matching param tag in the XML comment for 'ProductController.Post(Product)' (but other parameters do)
         {
             try
             { 
@@ -97,6 +105,7 @@ namespace Ecommerce.Api.Controllers
         }
 
         // PATCH api/Product
+#pragma warning disable CS1572 // XML comment has a param tag for 'Product', but there is no parameter by that name
         /// <summary>
         /// Update new product
         /// </summary>
@@ -106,7 +115,10 @@ namespace Ecommerce.Api.Controllers
         /// <response code="400">Fail request</response>
         /// <response code="500">Internal error</response>
         [HttpPatch]
+#pragma warning restore CS1572 // XML comment has a param tag for 'Product', but there is no parameter by that name
+#pragma warning disable CS1573 // Parameter 'product' has no matching param tag in the XML comment for 'ProductController.Patch(Product)' (but other parameters do)
         public ActionResult<Guid> Patch([FromBody] Product product)
+#pragma warning restore CS1573 // Parameter 'product' has no matching param tag in the XML comment for 'ProductController.Patch(Product)' (but other parameters do)
         {
             try
             {

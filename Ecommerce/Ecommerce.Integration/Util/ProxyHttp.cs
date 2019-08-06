@@ -4,21 +4,24 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 
 namespace Ecommerce.Integration.Util
 {
     public class ProxyHttp<T>
     {
         private readonly IHttpClientFactory _httpClientFactory;
-        
-        public ProxyHttp(IHttpClientFactory httpClientFactory)
+        private readonly IConfiguration _config;
+
+        public ProxyHttp(IHttpClientFactory httpClientFactory, IConfiguration config)
         {
             _httpClientFactory = httpClientFactory;
+            _config = config;
         }
 
         public async Task<T> Post(string metodo, Object obj)
         {
-            string url = "http://authorization-api.ddns.net:5000/" + metodo;
+            string url = _config.GetSection("Url").GetSection("authorization").Value + metodo;
             string jsonInString = JsonConvert.SerializeObject(obj);
             var client = _httpClientFactory.CreateClient();
             var response = await client.PostAsync(url,

@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Text;
 using System.Linq;
+using System.Data;
 
 namespace Ecommerce.Repository.Base
 {
     public class Repository<T> : IRepository<T> where T : class, IEntity
     {
         private readonly IConfiguration _config;
-
         public Repository(IConfiguration config)
         {
             _config = config;
@@ -24,7 +24,21 @@ namespace Ecommerce.Repository.Base
         {
             using (var conn = new ConnectionFactory().GetConnection(_config.GetConnectionString("DefaultConnection")))
             {
-                return conn.Insert<T>(entity);
+                using (var transaction = conn.BeginTransaction())
+                {
+                    try
+                    {
+                        var id = conn.Insert<T>(entity);
+                        transaction.Commit();
+                        return id;
+                    }
+                    catch
+                    {
+                        transaction.Rollback();
+                        throw;
+                    }
+                }
+
             }
         }
 
@@ -36,7 +50,20 @@ namespace Ecommerce.Repository.Base
                 {
                     entity.Id = Get(entity.Key)?.Id ?? 0;
                 }
-                return conn.Update<T>(entity);
+                using (var transaction = conn.BeginTransaction())
+                {
+                    try
+                    {
+                        bool ret = conn.Update<T>(entity);
+                        transaction.Commit();
+                        return ret;
+                    }
+                    catch
+                    {
+                        transaction.Rollback();
+                        throw;
+                    }
+                }
             }
         }
 
@@ -69,7 +96,21 @@ namespace Ecommerce.Repository.Base
                 {
                     entity.Id = Get(entity.Key)?.Id ?? 0;
                 }
-                return conn.Delete<T>(entity);
+                using (var transaction = conn.BeginTransaction())
+                {
+                    try
+                    {
+                        bool ret = conn.Delete<T>(entity);
+                        transaction.Commit();
+                        return ret;
+                    }
+                    catch
+                    {
+                        transaction.Rollback();
+                        throw;
+                    }
+
+                }
             }
         }
 

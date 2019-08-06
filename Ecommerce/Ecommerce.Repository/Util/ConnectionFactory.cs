@@ -1,14 +1,15 @@
-﻿using System;
+﻿using Npgsql;
+using System;
 using System.Data.SqlClient;
 
 namespace Ecommerce.Repository.Util
 {
     public class ConnectionFactory  
     {
-        private SqlConnection _conn;
-        public SqlConnection GetConnection(string sqlConnection)
+        private NpgsqlConnection _conn;
+        public NpgsqlConnection GetConnection(string sqlConnection)
         {
-            _conn = new SqlConnection(sqlConnection);
+            _conn = new NpgsqlConnection(sqlConnection);
             _conn.Open();
             return _conn;
         }
